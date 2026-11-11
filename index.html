@@ -14,6 +14,7 @@
       overflow: hidden;
       width: 100vw;
       height: 100vh;
+      height: 100dvh;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -23,6 +24,7 @@
       position: relative;
       width: 100vw;
       height: 100vh;
+      height: 100dvh;
       background: #ffffff;
       overflow: hidden;
     }
@@ -50,8 +52,10 @@
       flex-direction: column;
       padding: 3% 5% 2% 5%;
       justify-content: space-between;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
-    .intro-header { width: 100%; }
+    .intro-header { width: 100%; flex-shrink: 0; }
     .intro-pretitle {
       font-size: clamp(12px, 1.1vw, 18px);
       letter-spacing: 1.5px;
@@ -60,13 +64,13 @@
       margin-bottom: 4px;
     }
     .intro-main-title {
-      font-size: clamp(22px, 2.7vw, 44px);
+      font-size: clamp(20px, 2.7vw, 44px);
       font-weight: bold;
       color: #ffffff;
       margin-bottom: 6px;
     }
     .intro-subtitle {
-      font-size: clamp(14px, 1.4vw, 24px);
+      font-size: clamp(13px, 1.4vw, 24px);
       color: #e2f3f7;
     }
     .intro-body {
@@ -111,7 +115,12 @@
       font-size: clamp(13px, 1.2vw, 20px);
       line-height: 1.5;
     }
-    .intro-footer { display: flex; justify-content: center; width: 100%; }
+    .intro-footer {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      flex-shrink: 0;
+    }
     .btn-start-exact {
       background: transparent;
       border: 2px solid #ffffff;
@@ -128,7 +137,7 @@
     }
 
     /* ===================================================
-       2. СЛАЙД 2: КАРТА (ИСПРАВЛЕНА ТОЧНАЯ ПРИВЯЗКА)
+       2. СЛАЙД 2: КАРТА
        =================================================== */
     #screen-map {
       background: #ffffff;
@@ -137,11 +146,11 @@
       align-items: center;
       width: 100vw;
       height: 100vh;
+      height: 100dvh;
       padding: 1vh 1vw;
       overflow: hidden;
     }
     
-    /* Контейнер ОБЛЕГАЕТ картинку без малейшего зазора */
     .map-box {
       position: relative;
       display: inline-block;
@@ -150,7 +159,6 @@
       border-radius: 4px;
     }
 
-    /* Сама карта Минска */
     .map-base-img {
       display: block;
       max-width: 96vw;
@@ -161,7 +169,6 @@
       -webkit-user-drag: none;
     }
 
-    /* Овальная серая плашка "Карта Минска" */
     .map-badge-oval {
       position: absolute;
       transform: translate(-50%, -50%);
@@ -183,7 +190,6 @@
       z-index: 5;
     }
 
-    /* Метки */
     .map-spot {
       position: absolute;
       transform: translate(-50%, -50%);
@@ -252,6 +258,7 @@
     #slide-maz {
       width: 100vw;
       height: 100vh;
+      height: 100dvh;
       display: flex;
     }
     .maz-left { flex: 1.1; height: 100%; background: #000; }
@@ -291,6 +298,7 @@
     #slide-vokzal {
       width: 100vw;
       height: 100vh;
+      height: 100dvh;
       background: #0d1e2b;
       display: flex;
       padding: 2% 4%;
@@ -314,6 +322,7 @@
     #slide-zoo {
       width: 100vw;
       height: 100vh;
+      height: 100dvh;
       background: #153c4d;
       display: flex;
       padding: 2% 4%;
@@ -351,6 +360,7 @@
     #slide-park {
       width: 100vw;
       height: 100vh;
+      height: 100dvh;
       background: #143820;
       display: flex;
     }
@@ -379,6 +389,7 @@
     #slide-museum {
       width: 100vw;
       height: 100vh;
+      height: 100dvh;
       background: #1a1a1f;
       display: flex;
       padding: 3% 4%;
@@ -412,6 +423,7 @@
     #slide-arena {
       width: 100vw;
       height: 100vh;
+      height: 100dvh;
       background: linear-gradient(120deg, #182635 0%, #4a2138 100%);
       display: flex;
       padding: 3% 4%;
@@ -423,11 +435,56 @@
     .arena-main-img { width: 50%; height: 100%; object-fit: cover; border-radius: 8px; }
     .arena-right { flex: 1; display: flex; flex-direction: column; justify-content: space-between; height: 90%; }
 
-    /* Мобильная адаптация */
+    /* ===================================================
+       МОБИЛЬНАЯ АДАПТАЦИЯ
+       =================================================== */
     @media (max-width: 768px) {
-      .intro-body, #slide-maz, #slide-vokzal, #slide-zoo, #slide-park, #slide-museum, #slide-arena {
+      #screen-intro {
+        padding: 16px 20px 24px 20px !important;
+        justify-content: flex-start !important;
+        gap: 14px !important;
+        overflow-y: auto !important;
+      }
+      .intro-body {
+        flex-direction: column !important;
+        gap: 14px !important;
+        margin: 0 !important;
+        width: 100% !important;
+      }
+      .intro-map-frame {
+        width: 100% !important;
+        padding: 8px !important;
+      }
+      .intro-map-frame img {
+        max-height: 18vh !important;
+      }
+      .intro-right-col {
+        width: 100% !important;
+        align-items: stretch !important;
+      }
+      .intro-pill-badge {
+        align-self: flex-start;
+        margin-bottom: 8px !important;
+      }
+      .intro-speech-bubble {
+        padding: 14px 16px !important;
+        font-size: 13.5px !important;
+        line-height: 1.4 !important;
+      }
+      .intro-footer {
+        margin-top: auto !important;
+        padding-top: 10px !important;
+        padding-bottom: 24px !important;
+      }
+      .btn-start-exact {
+        padding: 10px 48px !important;
+        font-size: 18px !important;
+      }
+
+      #slide-maz, #slide-vokzal, #slide-zoo, #slide-park, #slide-museum, #slide-arena {
         flex-direction: column !important;
         overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
         padding: 15px !important;
       }
       .maz-left, .vokzal-left, .zoo-left, .park-right, .museum-right, .arena-left {
@@ -473,7 +530,7 @@
       </div>
     </section>
 
-    <!-- 2. СЛАЙД С КАРТОЙ (ТОЧНАЯ ПОСАДКА НА КАРТУ) -->
+    <!-- 2. СЛАЙД С КАРТОЙ -->
     <section class="screen" id="screen-map">
       <div class="map-box">
         <img src="media/image3.jpeg" alt="Карта Минска" class="map-base-img">
